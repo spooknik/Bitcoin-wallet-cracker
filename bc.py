@@ -7,6 +7,7 @@ import binascii
 import ecdsa
 import base58
 import datetime
+import webbrowser
 import PySimpleGUI as sg
 from json import (load as jsonload, dump as jsondump)
 from os import path
@@ -140,7 +141,12 @@ def create_main_window(settings):
     menu_def = [['&Menu', ['&Settings', 'E&xit']]]
 
     layout = [[sg.Menu(menu_def)],
-              [sg.Text('Number of mnemonic words', size=(30,1), font=('Comic sans ms', 10)), sg.Spin(values=('3', '6', '9', '12', '15', '18', '21', '24'), key='num')], 
+              [sg.Text('Number of mnemonic words', size=(30,1), font=('Comic sans ms', 10)),
+               sg.Spin(values=('3', '6', '9', '12', '15', '18', '21', '24'),size=(3,1), key='num'), sg.Text('', size=(17,1)),
+               sg.Button('', key='paypal', size=(12,1), font=('Helvetica', 9), button_color=(sg.theme_background_color(), sg.theme_background_color()),
+                         image_filename='paypal.png', image_size=(80, 50), image_subsample=2, border_width=0),
+               sg.Button('', key='bitcoin', size=(12,1), font=('Helvetica', 9), button_color=(sg.theme_background_color(), sg.theme_background_color()),
+                         image_filename='bitcoin.png', image_size=(80, 60), image_subsample=2, border_width=0)],
               [sg.Text('This program has been running for... ', size=(30,1), font=('Comic sans ms', 10)),
                sg.Text('', size=(30,1), font=('Comic sans ms', 10), key='_DATE_')],
               [sg.Text('')],
@@ -189,6 +195,13 @@ def main():
                 window.close()
                 window = None
                 save_settings(SETTINGS_FILE, settings, values)
+
+
+        elif event == 'paypal':
+            webbrowser.open_new_tab("https://www.paypal.com/donate/?cmd=_s-xclick&hosted_button_id=PFB6A6HLAQHC2&source=url")
+        
+        elif event == 'bitcoin':
+            webbrowser.open_new_tab("https://commerce.coinbase.com/checkout/149a6235-ec7e-4d3b-a1ae-b08c4f08b4f6")
 
     
     window.Close()
