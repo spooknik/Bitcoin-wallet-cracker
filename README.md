@@ -1,5 +1,7 @@
 ![Imgur](bc.gif)
 
+**Programmed in Python | PySimpleGUI**
+
 
 [![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
 
