@@ -41,6 +41,30 @@ python bc.py
 cd dist
 start bc.exe
 ```
+
+## Offline address derivation demo
+
+`address_derivation_demo.py` demonstrates P2PKH address derivation from a
+published SEC-encoded public-key test vector. It runs entirely offline, does not
+generate private keys, and does not scan or query wallet balances.
+
+```bash
+python address_derivation_demo.py
+python -m unittest test_address_derivation_demo.py
+```
+
+## Offline public-key format validator
+
+`public_key_validator.py` validates the hexadecimal structure and SEC encoding
+of a public key locally. It accepts only public keys and performs no wallet,
+private-key, or network operations.
+
+```bash
+python public_key_validator.py
+python public_key_validator.py 0279be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798
+python -m unittest test_public_key_validator.py
+```
+
 # Proof of Concept
 ```
 Although this project can be used maliciously, it is simply an 
@@ -89,5 +113,3 @@ You can also donate Bitcoin, Bitcoin Cash, Dai, Ethereum, Litecoin and USD Coin.
 
 
 **The code within this repository comes with no guarantee, the use of this code is your responsibility. I take NO responsibility and/or liability for how you choose to use any of the source code available here. By using any of the files available in this repository, you understand that you are AGREEING TO USE AT YOUR OWN RISK. Once again, ALL files available here are for EDUCATION and/or RESEARCH purposes ONLY.**
-
-
